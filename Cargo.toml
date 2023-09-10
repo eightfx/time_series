@@ -5,9 +5,9 @@ edition = "2021"
 authors = ["eight <official@eightt.net>"]
 description = "A library for handling time series data."
 license = "AGPL-3.0-or-later"
-repository = "https://github.com/eightfx/time_series"
-documentation = "https://docs.rs/time_series"
-readme = "README.org"
+repository = "https://github.com/eightfx/time_series_utils"
+documentation = "https://docs.rs/time_series_utils"
+readme = "README.md"
 categories = ["data-structures", "scientific-computing", "mathematics", "algorithms"]
 keywords = ["time-series", "math", "statistics", "data-analysis", "finance"]
 

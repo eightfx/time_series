@@ -13,17 +13,6 @@ A simple and flexible TimeSeries library in Rust.
 
 To install the TimeSeries library, add the following line to your =Cargo.toml=:
 
-#+BEGIN_SRC toml
-[dependencies]
-time_series = "0.1.0"
-#+END_SRC
-
-Then run:
-
-#+BEGIN_SRC shell
-$ cargo build
-#+END_SRC
-
 ** Usage
 
 Import the library and start using it like so:
