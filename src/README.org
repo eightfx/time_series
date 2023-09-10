@@ -1,0 +1,113 @@
+* TimeSeries Library for Rust
+
+A simple and flexible TimeSeries library in Rust.
+
+** Table of Contents
+- Installation
+- Usage
+- Features
+- Contributing
+- License
+
+** Installation
+
+To install the TimeSeries library, add the following line to your =Cargo.toml=:
+
+#+BEGIN_SRC toml
+[dependencies]
+time_series = "0.1.0"
+#+END_SRC
+
+Then run:
+
+#+BEGIN_SRC shell
+$ cargo build
+#+END_SRC
+
+** Usage
+
+Import the library and start using it like so:
+
+#+BEGIN_SRC rust
+extern crate time_series;
+
+use time_series::TimeSeries;
+use time_series::Variation; // if you want to use the variation methods like diff and pct_change
+#+END_SRC
+
+Here's a quick example that demonstrates how to create a new TimeSeries instance, add elements, and perform a map operation:
+
+#+BEGIN_SRC rust
+let mut ts = TimeSeries::new();
+ts.push(1);
+ts.push(2);
+ts.push(3);
+
+let new_ts = ts.map(|&x| x * 2);
+println!("{:?}", new_ts); // Should print TimeSeries([2, 4, 6])
+#+END_SRC
+
+** Features
+
+- Basic TimeSeries manipulation methods such as =push=, =pop=, =len=, =is_empty=, and =slice=.
+- Variation trait for statistical calculations like =diff= and =pct_change=.
+- Generic design allows for storing any type that implements the =Clone= trait.
+
+** Highlight Feature: The map Method
+
+One of the key features of this TimeSeries library is the =map= method. This method allows you to transform a =TimeSeries<T>= into a =TimeSeries<U>= by applying a function =f: T -> U= to each element in the series.
+
+The function takes a closure or a named function that receives an immutable reference to the data point and should return a new data point of possibly a different type.
+
+*** Using a Lambda Function
+
+Here's how you can use it with a lambda function:
+
+#+BEGIN_SRC rust
+let mut ts = TimeSeries::new();
+ts.push(1);
+ts.push(2);
+ts.push(3);
+
+let new_ts = ts.map(|&x| x * 2);
+println!("{:?}", new_ts);  // Should print TimeSeries([2, 4, 6])
+#+END_SRC
+
+*** Using a Named Function
+
+You can also use a named function to achieve the same transformation:
+
+#+BEGIN_SRC rust
+fn transform(x: &i32) -> i32 {
+    x * 2
+}
+
+let mut ts = TimeSeries::new();
+ts.push(1);
+ts.push(2);
+ts.push(3);
+
+let new_ts = ts.map(transform);
+println!("{:?}", new_ts);  // Should print TimeSeries([2, 4, 6])
+#+END_SRC
+
+*** Changing the Type
+
+You can even change the type of data stored in the TimeSeries:
+
+#+BEGIN_SRC rust
+let mut ts = TimeSeries::new();
+ts.push(1);
+ts.push(2);
+ts.push(3);
+
+let new_ts: TimeSeries<String> = ts.map(|&x| format!("Value: {}", x));
+println!("{:?}", new_ts);  // Should print TimeSeries(["Value: 1", "Value: 2", "Value: 3"])
+#+END_SRC
+
+This feature makes it incredibly easy to convert time series data into various time series indices or to apply any kind of transformations needed for your specific use-case.
+
+** Contributing
+
+Contributions are welcome! Please fork the repository and open a pull request with your changes, or open an issue for discussion.
+
