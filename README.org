@@ -55,7 +55,7 @@ println!("{:?}", new_ts); // Should print TimeSeries([2, 4, 6])
 
 ** Highlight Feature: The map Method
 
-One of the key features of this TimeSeries library is the =map= method. This method allows you to transform a =TimeSeries<T>= into a =TimeSeries<U>= by applying a function =f: T -> U= to each element in the series.
+One of the key features of this TimeSeries library is the =map= method. This method allows you to transform a =TimeSeries<T>= into a =TimeSeries<U>= by applying a function =f: &T -> U= to each element in the series.
 
 The function takes a closure or a named function that receives an immutable reference to the data point and should return a new data point of possibly a different type.
 
