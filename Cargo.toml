@@ -1,6 +1,6 @@
 [package]
 name = "time_series_utils"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["eight <official@eightt.net>"]
 description = "A library for handling time series data."
